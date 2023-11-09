@@ -6,8 +6,7 @@ set -o pipefail  # don't hide errors within pipes
 
 clojure -T:build ci
 
-PASSWORD_ITEM="$(bw get item 21518857-4d61-456f-a723-aed200eb0b7a)"
-CLOJARS_USERNAME="$(echo "${PASSWORD_ITEM}" | jq -r '.login.username')"
-CLOJARS_PASSWORD="$(echo "${PASSWORD_ITEM}" | jq -r '.login.password')"
+export CLOJARS_USERNAME="codonnell"
+export CLOJARS_PASSWORD="$(bw get notes 49c1ca81-3e50-4575-98e6-b0b5009a11f2)"
 
 clojure -T:build deploy
